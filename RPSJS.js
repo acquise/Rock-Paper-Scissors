@@ -1,10 +1,11 @@
 
 let playerScore = 0
 let compScore = 0
+let winner
 
-function playerEntry(pentry){
-    return pentry;
-}
+
+pentry = prompt("Enter your choice: Rock, Paper or Scissors!")
+
 
 function compEntry(centry){
     centryOptions = ["Rock", "Paper", "Scissors"]
@@ -17,20 +18,28 @@ function roundResult(playerEntry,compEntry){
         console.log("This round is a tie!")
     }
     else if (playerEntry === "Rock" && compEntry === "Scissors" || playerEntry === "Paper" && compEntry === "Rock" || playerEntry === "Scissors" && compEntry === "Paper"){
-        console.log("Player wins this round!");
-        playerScore +=1
+        console.log("Player wins this round..." + playerEntry + " beats " + compEntry);
+        playerScore ++
 }
     else {
-        console.log("Comp wins the round!")
-        compScore +=1
+        console.log("Comp wins this round!...." + compEntry + " beats " + playerEntry);
+        compScore ++    
     }
 }
 
 function playRound() {
+    let roundScore = 0
     while (compScore < 3 && playerScore < 3) {
-        console.log(roundResult("Rock",compEntry()))
+        console.log(roundResult(pentry,compEntry()))
+        roundScore +=1
 }
-console.log("The game is complete!")
+
+if (compScore === 3){
+    winner = "Computer";}
+    else {
+            winner = "Player"
+    }
+console.log("The game is complete! you played " + roundScore + " rounds total and " + winner + " won!")
 
 }
 console.log(playRound())
